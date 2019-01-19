@@ -4,4 +4,6 @@
 conda install graphviz
 ```
 
-pour installer la biblioth`eque `graphviz`.
+pour installer la bibliothèque `graphviz`:
+
+![lancer conda](https://raw.githubusercontent.com/Informathix/UCO_L2/master/Graphes/conda1.png)
