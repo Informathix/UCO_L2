@@ -65,9 +65,9 @@ class Graphe:
                 """
                 d = Graph()
                 d.node_attr.update(style='filled', color="#00ff005f")
-                for v in self.dict_adj:
+                for v in self.sommets():
                         d.node(v)
-                        for u in self.dict_adj[v]:
+                        for u in self.adjacents(v):
                                 if u > v:
                                         d.edge(v, u)
                 d.render(name, view=True)#, format='png')
