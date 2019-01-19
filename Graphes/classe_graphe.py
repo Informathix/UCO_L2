@@ -68,7 +68,8 @@ class Graphe:
                 for v in self.dict_adj:
                         d.node(v)
                         for u in self.dict_adj[v]:
-                                d.edge(v, u)
+                                if u > v:
+                                        d.edge(v, u)
                 d.render(name, view=True)#, format='png')
 
 
