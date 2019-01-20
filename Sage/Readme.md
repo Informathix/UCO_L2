@@ -7,3 +7,5 @@ Pour lancer Jupyter depuis sage,c'est simple (et on espère que ça marche aussi
 └────────────────────────────────────────────────────────────────────┘
 sage: !sage -n jupyter
 ```
+Ensuite, étudier les différents notebooks:
+* [Premiers pas en Analyse](https://github.com/Informathix/UCO_L2/blob/master/Sage/TP_Sage_Analyse.ipynb)
