@@ -15,3 +15,4 @@
 * Littérature aléatoire : vous récupérez n'importe quel texte de roman et fabriquez un outil qui, selon une lettre ou un groupe de lettre de longueur choisie, donne la probabilité d'être suivi par telle lettre ou groupe de lettres.
 Vous fabriquez ensuite un texte aléatoirement selon la distribution des fréquences observées. Faites de même en considérant cette fois les mots et non plus les lettres.
 
+* Calculs de $\pi$: illustrez avec SageMath plusieurs méthodesde calcul d'approximation de   $\pi$: calcul d'intégrales de $\sqrt{x^2-1}$, formules avec des Arctan, pôlynômes de Gregory, méthodes de Brent et Salamin, algorithme de Plouffe,...
