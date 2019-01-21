@@ -1,4 +1,4 @@
-## Liste de thèmes de projets possibles à raliser en utilisant Sagemath
+## Liste de thèmes de projets possibles à réaliser en utilisant Sagemath
 
 * Séances de TD niveau lycée et/ou L1 : Préparer  des feuilles de TD interactives sur le programme de lycée et/ou L1. Prévoir peut-être une gestion simplifier côté prof via Git.
 
