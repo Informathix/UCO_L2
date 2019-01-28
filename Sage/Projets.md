@@ -1,6 +1,6 @@
 ## Liste de thèmes de projets possibles à réaliser en utilisant Sagemath
 
-* Séances de TD niveau lycée et/ou L1 : Préparer  des feuilles de TD interactives sur le programme de lycée et/ou L1. Prévoir peut-être une gestion simplifier côté prof via Git.
+* Séances de TD niveau lycée et/ou L1 : Préparer  des feuilles de TD interactives sur le programme de lycée et/ou L1. Prévoir peut-être une gestion simplifiée côté prof via Git ou Teams.
 
 * [Chiffrement de Hill](https://fr.wikipedia.org/wiki/Chiffre_de_Hill) : créer un outil de chiffrement/déchiffrement et de cryptanalyse à l'aide de SageMath
 
