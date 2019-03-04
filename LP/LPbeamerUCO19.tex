@@ -1,0 +1,911 @@
+%\RequirePackage{atbegshi}
+\documentclass[french]{beamer}
+\usepackage{etex}
+
+\usepackage[beamer,utf8x]{preambuleTrm}
+
+
+
+\usepackage{iwona}
+
+
+\mode<presentation>
+{
+  %\usetheme{Bergen}%Montpellier,Madrid}
+  % or ...Frankfurt, 
+  \usetheme[secheader]{Montpellier}
+
+  %\setbeamercovered{highly dynamic}
+  % or whatever (possibly just delete it)
+  \usefonttheme{progressbar}
+%  \useoutertheme{progressbar}
+  %\useinnertheme{progressbar}
+ % \progressbaroptions{% titlepage=normal,
+  %  imagename=/home/moi/Photos/Maths/prisoner
+%}
+}
+
+%\usepackage{elephantbird}
+\newcommand\MyBox[2][XXX]{%
+  \fbox{\tabular[b]{C{#1}} #2 \endtabular}}
+
+\setbeamertemplate{footline}[frame number]
+\beamertemplatenavigationsymbolsempty
+
+%\usepackage[french,vlined,boxed]{algorithm2e}
+\usepackage{bookmark,multido}
+%\usepackage{xlop}
+
+\ifpdf \DeclareGraphicsRule{*}{mps}{*}{} \fi
+\usepackage{tikz, pgfkeys, pgfopts, xstring}
+\usetikzlibrary{automata,fit,trees,matrix,arrows,decorations.markings,shapes,arrows,chains,positioning,intersections,backgrounds,calc,through,mindmap,shadows,patterns, positioning}
+
+\usepackage{tikz-uml}
+
+\usepackage[underline=true,rounded corners=false]{pgf-umlsd}
+
+\hypersetup{pdfpagemode=FullScreen}
+
+\usepackage[detect-all]{siunitx}
+
+\usepackage{caption}
+\captionsetup{labelformat=empty,font=footnotesize}
+
+\usepackage[square]{daedale}
+\bibliographystyle{cyclope}
+
+
+\usepackage{algo}
+
+\renewcommand{\algocommentfont}{\tiny\ttfamily\itshape}
+\renewcommand{\algokeywordfont}{\small\ttfamily}
+\renewcommand{\algotextfont}{\footnotesize\ttfamily}
+\newtheorem{exercice}{Exercice}
+
+
+\setlength{\columnseprule}{0pt}
+
+%\setlength{\parskip}{0pt}
+
+
+\graphicspath{{/home/moi/IUT/Figures/}{/home/moi/VISA_III/figures_visa/}{/home/moi/Lycee/TDmaple/2006_7/}{/home/moi/Figures/Arbres_Graphes/}{/home/moi/Figures/FigSTI/}{/home/moi/Figures/FigMaple/}{/home/moi/Photos/Maths/}{/home/moi/Photos/Tehessin/}{/home/moi/Figures/FigSTI/}{/home/moi/Figures/FigSeconde/}{/home/moi/Lycee/Informatique/XCAS/2008_9/}{/home/moi/Lycee/TDmaple/2008_9/}{/home/moi/IUT/Thierry/Conversions/}{/home/moi/Photos/informathix/}{/home/moi/Lycee/Informatique/PafAlgo/}{/home/moi/Figures/figuresAlice/}{/home/moi/Figures/FigSeconde/}{/home/moi/Biocam/robot/}{/home/moi/Biocam/CoursIni3d/}{/home/moi/Biocam/central/figures/}{/home/moi/Biocam/central/}{/home/moi/IUT/INFO2/Images/}{/home/moi/IUT/INFO2/2011_12/graphes/}{/home/moi/IUT/INFO1/CM1/}{/home/moi/Figures/figuresTS/}{/home/moi/Photos/Tehessin/}{/home/moi/Figures/FigSTI/}{/home/moi/Alice/figures3/}{/home/moi/Alice/figures3/newcourbes/}{/home/moi/Alice/figures/}{/home/moi/Figures/figuresAlice/}{/home/moi/Photos/Maths/}{/home/moi/Lycee/TS/}{/home/moi/Lycee/TS/2009_10/}{/home/moi/Figures/FigMaple/}{/home/moi/Figures/figuresTS/newcourbes/}{/home/moi/Figures/FigEspace/}{/home/moi/PROG/HASKELL/FLOAT/}{/home/moi/LYCEE/LIL/4e/2016_17/Images/}{/home/moi/LYCEE/LIL/2nde/2016_17/Images/}{/home/moi/LYCEE/LIL/2nde/2016_17/fonctions/}{/home/moi/LYCEE/LIL/1S/2016_17/Images/}{/home/moi/LYCEE/LIL/1S/2016_17/Images/}{/home/moi/LYCEE/LIL/1S/2016_17/suites/suites1es/}{/home/moi/LYCEE/LIL/1S/2016_17/trigo/}{/home/moi/Photos/Maths/CAPTURES_TI/Suites/}{/home/moi/LYCEE/FIGURES/}{/home/moi/UCO/L1/ANGERS2018/Images/}}
+
+
+
+\setcounter{tocdepth}{2} %\setcounter{page}{0}
+
+
+
+
+\usepackage{fdsymbol}
+
+
+
+
+
+\setbeamercolor{block title}{use=structure,fg=black,bg=blue!55!white}
+\setbeamercolor{block body}{use=structure,fg=black,bg=blue!10!white}
+
+
+\setbeamercolor{block title example}{use=structure,fg=black,bg=green!75!white}
+\setbeamercolor{block body example}{use=structure,fg=black,bg=green!10!white}
+
+\setbeamercolor{block title alert}{use=structure,fg=black,bg=red!75!white}
+\setbeamercolor{block body alert}{use=structure,fg=black,bg=red!10!white}
+
+
+
+\setbeamerfont{block body}{size*={10}{12}}
+\setbeamerfont{block body alerted}{size*={10}{12}}
+\setbeamerfont{block body example}{size*={10}{12}}
+
+
+\newenvironment{exercise}{\begin{exampleblock}{Recherche}}{\end{exampleblock}}
+
+\usepackage{scalefnt}
+\setbeamertemplate{theorems}[normal size]
+
+
+\usepackage{colortbl}
+
+\begin{document}
+
+
+\title[]% (optional, use only with long paper titles)
+{Programmation linéaire en pratique}
+
+\subtitle{L2 MIASHS}
+
+\author[] % (optional, use only with lots of authors)
+{Guillaume CONNAN }
+% - Give the names in the same order as the appear in the paper.
+% - Use the inst{?} command only if the authors have different
+%   affiliation.
+
+\institute{Université Catholique de l'Ouest - Rezé}% (optional, but mostly needed)
+
+\logo{\includegraphics[width=0.1\textwidth]{logoUCO}}
+
+%\logo{\includegraphics[scale=0.15]{big_connan}}
+
+\date[] % (optional, should be abbreviation of conference name)
+{2019}
+% - Either use conference name or its abbreviation.
+% - Not really informative to the audience, more for people (including
+%   yourself) who are reading the slides online
+
+\subject{ }
+
+
+
+\beamerdefaultoverlayspecification{<+->}
+
+
+\AtBeginSubsection[]
+{\scriptsize
+  \begin{frame}<beamer>
+    \frametitle{Sommaire}
+ {\tiny
+\begin{multicols}{2}
+    \tableofcontents[currentsection,currentsubsection]
+       \end{multicols}
+}
+
+  \end{frame}
+}
+
+
+
+
+
+\AtBeginSection[]
+{
+  \begin{frame}<beamer>
+    \frametitle{Sommaire}
+ {\scriptsize
+\begin{multicols}{2}
+    \tableofcontents[currentsection]
+       \end{multicols}
+}
+
+  \end{frame}
+}
+
+
+% If you wish to uncover everything in a step-wise fashion, uncomment
+% the following command: 
+
+\beamerdefaultoverlayspecification{<+->}
+
+
+
+
+\newcommand{\TR}{\mathcal{T}}
+
+
+\begin{frame}
+%\ThisCenterWallPaper{1}{logoiremBigInv}
+ \Large \titlepage 
+\end{frame}
+
+\begin{frame}
+ \frametitle{Sommaire}
+{\scriptsize
+\begin{multicols}{2} 
+ \tableofcontents
+\end{multicols}
+}
+
+ 
+ \end{frame}
+
+\normalsize
+
+
+% début
+
+\section{Programmation linéaire avec Sage}
+
+
+\begin{frame}
+  \begin{align*}
+  \text{max : }&x_1+x_2+3x_3\\
+  \text{tel que : }&x_1+2x_2 \leqslant 4\\
+  &5x_3  - x_2 \leqslant 8 \\
+  &x,y,z \geqslant 0.
+\end{align*}
+\end{frame}
+
+\begin{frame}[fragile]
+\begin{pythoncode}
+sage: p = MixedIntegerLinearProgram()
+sage: x = p.new_variable(real=True, nonnegative=True)
+sage: p.set_objective(x[1] + x[2] + 3*x[3])
+sage: p.add_constraint(x[1] + 2*x[2] <= 4)
+sage: p.add_constraint(5*x[3] - x[2] <= 8)
+\end{pythoncode}
+
+\pause
+  
+\begin{pythoncode}
+sage: p.solve()
+8.8
+sage: p.get_values(x)
+{1: 4.0, 2: 0.0, 3: 1.6}
+\end{pythoncode}
+
+
+
+
+\end{frame}
+
+
+\section{Exemples de référence}
+
+
+\subsection{Variables à indices simples}
+
+\begin{frame}\frametitle{Exemple 1}
+
+  Une société de jouets produit des trains, des camions et des voitures, en utilisant 3 machines.
+Les disponibilités quotidiennes des 3 machines  sont 430, 460 et 420 minutes, et
+les profits par train, camion et voiture sont respectivement 3€, 2€ et 5€. 
+Les temps nécessaires sur chaque machine sont :
+
+\begin{center}
+\begin{tabular}{|c|c|c|c|}
+\hline
+ Temps Machines&Train&Camion&Voiture \\
+\hline
+$M_1$  &1&2&1 \\
+\hline
+$M_2$  &3&0&2 \\
+\hline
+$M_3$  &1&4&0 \\
+\hline
+\end{tabular}
+\end{center}
+
+L’objectif est de déterminer le plan de production réalisant un profit total maximal.
+\end{frame}
+
+
+
+
+\begin{frame}[fragile]
+\begin{pythoncode}
+sage: p = MixedIntegerLinearProgram(maximization=True)
+sage: x = p.new_variable(nonnegative=True)
+sage: p.set_objective(3*x[1] + 2*x[2] + 5*x[3])
+sage: p.add_constraint(x[1] + 2*x[2] + x[3] <= 430)
+sage: p.add_constraint(3*x[1] + 0*x[2] + 2*x[3] <= 460)
+sage: p.add_constraint(1*x[1] + 4*x[2] + 0*x[3] <= 420)
+\end{pythoncode}
+
+  \pause
+
+  \begin{pythoncode}
+sage: p.solve()
+1350.0
+sage: p.get_values(x)
+{1: 0.0, 2: 100.0, 3: 230.0}
+\end{pythoncode}
+
+
+
+
+  
+\end{frame}
+
+
+
+
+\begin{frame}[fragile]
+\begin{pythoncode}
+sage: p.add_constraint(x[1]>=10)
+sage: p.solve()
+1310.0
+sage: p.get_values(x)
+{1: 10.0, 2: 102.5, 3: 215.0}
+\end{pythoncode}
+\end{frame}
+
+
+\begin{frame}[fragile]
+\begin{pythoncode}
+sage: x = p.new_variable(nonnegative=True, integer=True)
+
+...
+
+sage: p.solve()
+1309.0
+sage: p.get_values(x)
+{1: 10.0, 2: 102.0, 3: 215.0}
+\end{pythoncode}
+
+
+\end{frame}
+
+
+
+\subsection{Variables à indices multiples}
+
+
+\begin{frame}\frametitle{Exemple 2}
+
+  Trois machines $M_1$, $M_2$, et $M_3$ peuvent  produire chacune deux types de pièces $P_1$
+  et $P_2$. Le temps de fabrication d’une pièce $P_i$ sur la machine $M_j$ est donné dans
+  le tableau suivant (en heures) :
+
+\begin{center}  
+\begin{tabular}{|c|c|c|c|}
+ \cline{2-4}
+     \multicolumn{1}{c|}{}
+  &$M_1$&$M_2$&$M_3$ \\
+\hline
+ $P_1$ &3&4&4 \\
+\hline
+ $P_2$ &4&6&5 \\
+\hline
+\end{tabular}
+\end{center}
+\pause
+
+On veut fabriquer au moindre coût 6 pièces de type $P_1$ et 8 pièces de type $P_2$. La
+machine  $M_1$ est  disponible 14  heures les  machines $M_2$  et $M_3$  sont disponibles
+chacune 24  heures. Le  coût horaire  de $M_1$  (respectivement $M_2$  et $M_3$)  vaut 7€
+(respectivement 5€ et 6€). 
+
+
+\end{frame}
+
+
+
+
+
+\begin{frame}
+  
+\begin{center}  
+\begin{tabular}{|c|c|c|c|}
+ \cline{2-4}
+     \multicolumn{1}{c|}{}
+  &$M_1$&$M_2$&$M_3$ \\
+\hline
+ $P_1$ &3&4&4 \\
+\hline
+ $P_2$ &4&6&5 \\
+\hline
+\end{tabular}
+\end{center}
+
+  
+  \begin{itemize}
+  \item On  note $x_{ij}$ le nombre  d'unités de $P_i$ fabriqués  par la machine
+    $M_j$
+  \item Le temps de fabrication sur $M_1$ est donc $3x_{11}+4x_{21}$
+  \item Le coût correspondant est donc $7(3x_{11}+4x_{21})$
+    \item    La    machine   $M_1$    doit    travailler    au   maximum    14h:
+      $3x_{11}+4x_{21}\leqslant 14$
+    \item Il faut au moins 6 pièces $P_1$: $x_{11}+x_{12}+x_{13}\geqslant 6$
+  \end{itemize}
+\end{frame}
+
+
+
+\begin{frame}[fragile]
+\begin{pythoncode}
+sage: p = MixedIntegerLinearProgram(maximization=False)
+sage: x = p.new_variable(nonnegative=True, integer=True)
+sage: p.set_objective(7*(3*x[1,1] + 4*x[2,1]) + 5*(4*x[1,2] + 6*x[2,2]) + 6*(4*x[1,3] + 5*x[2,3]))
+sage: p.add_constraint(3*x[1,1] + 4*x[2,1] <= 14)
+sage: p.add_constraint(4*x[1,2] + 6*x[2,2] <= 24)
+sage: p.add_constraint(4*x[1,3] + 5*x[2,3] <= 24)
+sage: p.add_constraint(p.sum(x[1,j] for j in range(1,4)) >= 6)
+sage: p.add_constraint(p.sum(x[2,j] for j in range(1,4)) >= 8)
+\end{pythoncode}
+
+  \pause
+
+\begin{pythoncode}
+sage: p.solve()
+362.0
+sage: p.get_values(x)
+{(1, 1): 2.0, (1, 2): 3.0, (1, 3): 1.0, (2, 1): 2.0, (2, 2): 2.0, (2, 3): 4.0}
+\end{pythoncode}
+
+
+  
+
+\end{frame}
+
+
+\begin{frame}[fragile]
+\begin{Verbatim}
+sage: ?p.sum
+Docstring:     
+   Efficiently computes the sum of a sequence of "LinearFunction"
+   elements
+
+   Note: The use of the regular "sum" function is not recommended as
+     it is much less efficient than this one
+
+   EXAMPLES:
+
+      sage: p = MixedIntegerLinearProgram()
+      sage: v = p.new_variable(nonnegative=True)
+
+   The following command:
+
+      sage: s = p.sum(v[i] for i in range(90))
+
+   is much more efficient than:
+
+      sage: s = sum(v[i] for i in range(90))
+\end{Verbatim}
+\end{frame}
+
+
+\subsection{Problème du sac à dos}
+
+
+\begin{frame}
+  \begin{itemize}
+  \item 
+  Le problème dit  du \og sac à dos  \fg\ est le suivant. Nous avons  en face de
+  nous  une   série  d'objets   ayant  tous  un   poids  propre,   ainsi  qu'une
+  \og{}utilité\fg\  mesurée  par un  réel.  Nous  souhaitons maintenant  choisir
+  certains de ces  objets en nous assurant  que la charge totale  ne dépasse pas
+  une  constante  $C$,  la meilleure  fa\c  con  de  le  faire étant  pour  nous
+  d'optimiser la somme des utilités des objets contenus dans le sac.
+
+\item
+  
+  Pour cela,  nous associerons à chaque  objet $o$ d'une liste  $L$ une variable
+  binaire \texttt{prendre[o]}, valant 1 si l'objet doit être mis dans le sac, et
+  0 sinon. Nous cherchons donc à résoudre le MILP suivant:
+
+  \begin{itemize}
+  \item $\text{max : }\sum_{o\in L}\text{utilité}_o\times \text{prendre}_o$
+  \item $ \text{tel que : }\sum_{o\in L} \text{poids}_o\times \text{prendre}_o \leqslant C$
+  \end{itemize}
+
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+\begin{pythoncode}
+sage: C = 1
+sage: L = ["Casserole", "Livre", "Couteau", "Gourde", "Lampe de poche"]
+sage: p = [0.57,0.35,0.98,0.39,0.08]; u = [0.57,0.26,0.29,0.85,0.23]
+sage: poids = {}; utilite = {}
+sage: for o in L:
+....:    poids[o] = p[L.index(o)]; utilite[o] = u[L.index(o)]
+\end{pythoncode}
+
+  \pause
+
+\begin{pythoncode}
+sage: p = MixedIntegerLinearProgram()
+sage: prendre = p.new_variable( binary = True )
+sage: p.add_constraint(
+....:   p.sum( poids[o] * prendre[o] for o in L ) <= C )
+sage: p.set_objective(
+....:   p.sum( utilite[o] * prendre[o] for o in L ) )
+sage: p.solve() 
+1.42
+sage: prendre = p.get_values(prendre)
+\end{pythoncode}
+
+
+  
+
+\end{frame}
+
+
+\begin{frame}[fragile]
+
+  La solution trouvée vérifie bien la contrainte de poids:
+  
+\begin{pythoncode}
+  sage: sum( poids[o] * prendre[o] for o in L )
+  0.960000000000000
+\end{pythoncode}
+
+
+\pause
+
+Faut-il prendre une gourde ?
+
+\begin{pythoncode}
+  sage: prendre["Gourde"]
+  1.0
+\end{pythoncode}
+
+
+\pause
+
+Quels objets prendre?
+
+\begin{pythoncode}
+sage: {o for o in L if prendre[o]}
+{'Casserole', 'Gourde'}
+\end{pythoncode}
+
+
+
+
+\end{frame}
+
+\section{Exercices}
+
+
+
+
+
+
+
+
+\begin{frame}
+  \begin{exercice}
+    Une entreprise dispose de  deux usines de fabrications $U_1$ et  $U_2$ et de trois
+    dépôts  $D_1$, $D_2$  et  $D_3$. Les  usines, qui  ont  des disponibilités  limitées,
+    doivent  fournir  au  dépôt  les  quantités  demandées.  L’acheminement  des
+    marchandises a un coût (frais de  transport, de carburant, taxes, etc) et ce
+    coût varie suivant les destinations.
+
+    Le  problème qui se pose  est celui de
+    l’acheminement au moindre coût. 
+
+
+    Les disponibilités de l’usine $U_1$ sont de 18 jours et celles 
+de $U_2$ sont de 32 jours.
+
+Les demandes des dépôts $D_1$, $D_2$ et $D_3$ sont respectivement de 9, 21 et
+20 quantités.
+
+Les coûts  de transports de l’usine $U_1$  vers chacun des dépôts  $D_1$, $D_2$  et  $D_3$
+sont respectivement de 13,  9, 15, et ceux de l’usine  $U_2$ sont respectivement de
+11, 10, et 18 par quantité transportée. 
+  \end{exercice}
+\end{frame}
+
+
+
+\begin{frame}
+  \begin{exercice}
+  Une   compagnie   souhaite  minimiser   le   coût   de  transport   permettant
+  d’approvisionner un  produit unique sur  5 dépôts de distribution  (clients) à
+  partir de  2 usines de production.  Chaque usine a une  capacité de production
+  limitée, et chaque client exprime une certaine demande en produit. Les données
+  relatives à cette problématique sont résumées dans le tableau suivant:
+
+  {\tiny 
+    \begin{center}
+  \begin{tabular}{|c|c|c|c|c|c|c|}
+     \cline{2-7}
+     \multicolumn{1}{c|}{}&Client 1&Client 2&Client 3&Client 4& Client 5& Capacité\\
+    \hline
+    Usine
+    1&1,75\texteuro{}&2,25\texteuro{}&1,50\texteuro{}&2,00\texteuro{}&1,50\texteuro{}&60000\\
+    \hline
+    Usine
+    2&2,00\texteuro{}&2,50\texteuro{}&2,50\texteuro{}&1,50\texteuro{}&1,00\texteuro{}&60000\\
+    \hline
+    Demande & 30000 &20000 &15000&32000&16000&\\
+    \hline
+  \end{tabular}
+ \end{center}
+}
+\end{exercice}
+\end{frame}
+
+
+
+\begin{frame}
+  \begin{exercice}
+    La problématique  est identique au  cas précédent, mais considère  un réseau
+    logistique faisant intervenir 2 niveaux:
+    \begin{itemize}
+    \item Niveau 1: Usines – Entrepôts
+    \item Niveau 2: Entrepôts – Clients
+    \end{itemize}
+\pause
+Les entrepôts  intervenant dans cette  organisation logistique ont  une capacité
+limitée. Ils ont un rôle de massification  des flux. A noter que l’on s’autorise
+éventuellement un  approvisionnement direct  d’un client  à partir  d’une usine,
+sans transiter par un entrepôt.  
+  \end{exercice}
+\end{frame}
+
+
+
+\begin{frame}
+  \begin{exercice}
+    Le problème calculatoire dénommé \emph{Subset  Sum} consiste à trouver, dans
+    un ensemble d'entiers relatifs, un sous-ensemble non vide d'éléments dont la
+    somme est nulle. Résoudre ce problème  avec un programme linéaire en nombres
+    entiers sur l'ensemble  $\{28, 10, -89, 69,  42, -37, 76, 78,  -40, 92, -93,
+    45\}$. 
+  \end{exercice}
+\end{frame}
+
+
+
+
+
+\begin{frame}
+  \begin{exercice}
+    Vous devez assurer le fonctionnement d'un service hospitalier le week-end. Vos contraintes sont :			\begin{enumerate}
+\item  il vous faut au moins 30 infirmières le vendredi, 20 le samedi et 12 le dimanche.
+\item  Une personne travaille ou non, mais pas à temps partiel.		
+\item  les infirmières peuvent travailler 1 ou 2 jours d'affilé mais pas les trois jours.
+\item  Il n'y a pas de prise de service le dimanche.
+\end{enumerate}
+
+\pause
+
+
+L’objectif est de ne monopoliser que le nombre minimal d’infirmières sur le week-end.
+  \end{exercice}
+\end{frame}
+
+\begin{frame}
+  \begin{exercice}
+    Une  compagnie  pétrolière  utilise  des véhicules  compartimentés  pour  la
+    distribution  de carburants  sur  les  stations service  de  son réseau.  On
+    considère ici le cas où 3 types de carburants doivent être approvisionnés au
+    moyen d’un camion citerne comportant 4 compartiments. Chaque client (station
+    service)   exprime    son   besoin    en   volume    (hl)   par    type   de
+    carburant.
+
+    Contractuellement,  si une  demande n’est  pas satisfaite  par le
+    pétrolier, une pénalité financière de 0,25€ est appliquée par hectolitre non
+    livré, générant ainsi une perte financière pour la compagnie pétrolière.
+
+    Le
+    problème est de  déterminer le chargement optimal du  véhicule permettant de
+    minimiser cette perte financière.  
+  \end{exercice}
+\end{frame}
+
+
+
+\begin{frame}
+  \begin{exercice}
+    Un  groupe  informatique important  possédant  4  agences réparties  sur  le
+    territoire  français doit  assurer  l’approvisionnement de  ses services  en
+    clés USB.
+
+    Les  besoins   prévisionnels  mensuels  par  agence   sont  connus.  3
+    fournisseurs potentiels  sont susceptibles  de décrocher  tout ou  partie du
+    contrat.
+
+    Chacun  de  ces  fournisseurs  a fait  une  offre  relative  à  la
+    fourniture de chacune  des agences (Coût = Coût produit  + Transport pour un
+    lot de 1000 clés USB).
+
+    Le problème  du responsable Achat est  de déterminer avec
+    quel(s) fournisseur(s) il doit  contracter, et les flux fournisseurs-agences
+    associés  de  manière à  minimiser  le  coût total  d’approvisionnement  des
+    agences. 
+  \end{exercice}
+\end{frame}
+
+
+
+\begin{frame}
+  \begin{exercice}
+    La problématique est similaire à  la précédente. Néanmoins, le Fournisseur 1
+    n’est intéressé par le marché que pour un volume minimal de 15000 clés USB par
+    mois. Quelle est la nouvelle politique d’achat optimale ? 
+  \end{exercice}
+\end{frame}
+
+\begin{frame}
+  \begin{exercice}
+    Une  compagnie américaine  désire minimiser  le coût  d’acheminement de  ses
+    productions de  ses usines  vers ses  centres de  distribution situés  à San
+    Francisco, Denver, Chicago, Dallas, et New York.
+
+    Chaque usine a une capacité
+    de production limitée, et chaque centre de distribution exprime une certaine
+    demande en produits  en regard de ses prévisions de  ventes. Cette compagnie
+    exploite  des  usines  en  Caroline  du   Sud,  dans  le  Tennessee,  et  en
+    Arizona.
+
+    Elle envisage  la possibilité  d’implanter une  nouvelle unité  de
+    production en  Arkansas d’une capacité  de 300, cette décision  induisant un
+    coût fixe additionnel au coût de transport de 100k\$.
+
+    Quelle  décision
+    doit-elle prendre? 
+  \end{exercice}
+\end{frame}
+
+
+
+\begin{frame}
+  \begin{exercice}
+    Une Groupe industriel exploite à l’heure  actuelle un réseau logistique de 5
+    usines permettant l’approvisionnement de 4 entrepôts.
+
+    Cette société souhaite réviser le  dimensionnement de cette organisation, et
+    envisage la fermeture éventuelle d’une ou de plusieurs usines.
+
+    L’effet direct  risque d’être une  augmentation du coût de  distribution qui
+    pourrait néanmoins  être contrebalancé  par une  diminution globale  du coût
+    d’exploitation du réseau.
+
+    Quelle décision doit-elle prendre?
+  \end{exercice}
+\end{frame}
+
+
+
+\begin{frame}
+  \begin{exercice}
+    Déterminer  comment investir  un excès  de trésorerie  de 400,000€  dans des
+    placements à maturités 1,3  et 6 mois de manière à  maximiser le montant des
+    intérêts acquis en respect d'un  volant de trésorerie utilisée mensuellement
+    et une marge de sécurité mensuelle de 100,000€.
+
+    Les caractéristiques des placements sont donnés dans le tableau ci-dessous:
+
+    \begin{center}
+    \begin{tabular}{|c|c|c|c|c|}
+      \cline{2-5}
+     \multicolumn{1}{c|}{}&Intérêt&Terme&Prix&Mois d'acquisition\\
+            \hline
+    1 mois&1\%&1&2000€&1, 2, 3, 4, 5 et 6\\
+            \hline
+      3 mois&4\%&3&3000€&1 et 4\\
+            \hline
+      6 mois&9\%&6&5000€&1 \\
+           \hline
+    \end{tabular}
+  \end{center}
+\end{exercice}
+\end{frame}
+
+
+
+
+
+
+
+\begin{frame}
+  \begin{exercice}
+    Un  loueur de  voitures possède  un  parc de  94 véhicules  répartis sur  10
+    agences.
+
+    Chaque agence  possède un effectif idéal permettant  de répondre au
+    mieux aux demandes du marché.
+
+    Cependant, la  réalité est  toute autre  et
+    chaque agence possède soit un déficit, soit un excédent de voitures. Il faut
+    donc rétablir l’équilibre dans chaque agence.
+
+    Ayant le distancier donnant le
+    kilométrage séparant chaque paire d’agences, et connaissant le coût moyen au
+    km de  déplacement d’une voiture (1,3€),  il s’agit de minimiser  le prix de
+    revient de ce rééquilibrage. 
+  \end{exercice}
+\end{frame}
+
+
+
+\begin{frame}
+   
+%\begin{figure}
+\begin{center}
+  \includegraphics[width=\textwidth]{tableauRail}
+\end{center}
+%\end{figure}
+\end{frame}
+
+\begin{frame}
+  \begin{exercice}
+    {\footnotesize
+    Un industriel  chimique doit  transporter 180  tonnes de  produits chimiques
+    stockés  dans 4  entrepôts vers  trois centres  de retraitement.  Les moyens
+    d’accès aux centres sont  la route et le rail, les  tarifs sont les suivants
+    (les  premiers  chiffres concerne  le  transport  sur route,  les  deuxièmes
+    concernent le  transport par rail. Le  sigle x indique que  le transport est
+    impossible):
+
+    {\tiny
+    \begin{center}
+      \begin{tabular}{|c|c|c|c|c|c|c|}
+         \cline{2-7}
+        \multicolumn{1}{c|}{}&
+         \multicolumn{2}{c|}{$CT_1$}& \multicolumn{2}{c|}{$CT_2$}& \multicolumn{2}{c|}{$CT_3$}\\
+        \cline{2-7}
+                 \multicolumn{1}{c|}{}             &Route&Rail&Route&Rail&Route&Rail\\
+        \hline
+        $E_1$ (50t)&12&x&11&x&x&x \\
+        \hline
+        $E_2$ (40t)&14&12&x&x&x&x \\
+        \hline
+        $E_3$ (35t)&x&x&9&x&5&4 \\
+        \hline
+        $E_4$ (65t)&x&x&14&11&14&10 \\
+        \hline
+      \end{tabular}
+    \end{center}
+    }
+    Par ailleurs, une contrainte est spécifiée au niveau du transport par rail :
+    en  effet,  la quantité  transportée  doit  être  comprise  entre 10  et  50
+    tonnes.\\
+    Il n’y a pas de réglementations pour le transport par route.\\
+    Comment
+    acheminer 180 tonnes de produits chimiques au moindre coût?
+    }
+  \end{exercice}
+\end{frame}
+
+
+\begin{frame}
+  \begin{exercice}
+    Une  cargaison de  20 tonnes  doit être  transportée sur  un trajet  de cinq
+    villes, avec  sur chaque  tronçon la possibilité  d’utiliser soit  la route,
+    soit le train, soit l’avion. On peut  changer de mode de transport à chacune
+    des villes traversées, mais le changement de mode a un coût.
+
+    Le but est bien
+    sûr de minimiser le coût de transport global.
+
+{\footnotesize
+    \smallskip
+      \begin{tabular}{|c||*{4}{c|}}
+        \hline
+        \rowcolor{blue!35!white} Coût de transport&Villes 1-2&Villes 2-3&Villes 3-4&Villes 4-5\\
+        \hline\hline
+        \cellcolor{blue!35!white}Rail&30&40&30&60\\
+        \hline
+        \cellcolor{blue!35!white}Route&20&40&50&50\\
+        \hline
+        \cellcolor{blue!35!white}Air&40&10&60&40\\
+        \hline
+      \end{tabular}
+      
+\vspace{0.3cm}
+
+\begin{tabular}{|c||*{3}{c|}}
+      \hline
+      \rowcolor{blue!35!white}\backslashbox{de}{vers}&Rail&Route&Air \\
+      \hline\hline
+      \cellcolor{blue!35!white}Rail&0&2&1 \\
+      \hline
+      \cellcolor{blue!35!white}Route&2&0&1 \\
+      \hline
+      \cellcolor{blue!35!white}Air&2&1&0 \\
+      \hline
+    \end{tabular}
+}
+\end{exercice}
+\end{frame}
+
+
+
+
+
+\begin{frame}
+  \begin{exercice}
+    Très souvent, les  problèmes rencontrés dans la  pratique professionnelle et
+    en particulier  la logistique  sont assimilables à  des casse-têtes  plus ou
+    moins élaborés. En voici un...
+    
+Partant d'une grille  carrée de taille 4×4 recouverte par  seize jetons, comment
+enlever six jetons en laissant un nombre pair de 
+jetons dans chaque ligne et chaque colonne de cette grille ?
+
+Proposezune sortie graphique.
+
+  \end{exercice}
+\end{frame}
+
+\end{document}
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:
